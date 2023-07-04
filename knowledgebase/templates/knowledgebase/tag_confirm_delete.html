@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <p>Delete "{{ object.name }}"</p>
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Create">
+        <input type="submit" value="Delete">
     </form>
 </body>
 </html>
