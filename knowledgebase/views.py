@@ -1,6 +1,8 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 from knowledgebase.models import Knowledge, Tag
 
 class KnowledgeCreateView(CreateView):
@@ -19,6 +21,14 @@ class KnowledgeDeleteView(DeleteView):
 class KnowledgeDetailView(DetailView):
     model = Knowledge
     fields = '__all__'
+
+class KnowledgeByTagView(ListView):
+    model = Knowledge
+    template_name = 'knowledge/knowledge_by_tag.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(tags__name=self.kwargs['name'])
 
 class TagCreateView(CreateView):
     model = Tag
