@@ -8,9 +8,11 @@
 <body>
     <h1>Tags: </h1>
     {% for tag in tags %}
-        <a href="{% 'knowledge-by-tag' tag.name %}">{{ tag.name }}</a>
+        <a href="{% url 'knowledge-by-tag' tag.name %}">{{ tag.name }}</a>
+    {% empty %}
+        <p>No tags yet!</p>
     {% endfor %}
-    <h1>Knowledge</h1>
+    <h1>Knowledge:</h1>
 
 
     {% for object in knowledge %}
