@@ -24,7 +24,7 @@ class KnowledgeDetailView(DetailView):
 
 class KnowledgeByTagView(ListView):
     model = Knowledge
-    template_name = 'knowledge/knowledge_by_tag.html'
+    template_name = 'knowledgebase/knowledge_by_tag.html'
 
     def get_queryset(self):
         qs = super().get_queryset()

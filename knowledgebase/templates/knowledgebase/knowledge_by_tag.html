@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listing knowledge by tag: {{ view.kwargs.name }}</h1>
+    {% for object in object_list %}
+        <p>Knowledge name: {{ object.name }}</p>
+        <p>Knowledge description: {{ object.description }}</p>
+        <p>Content:</p>    
+        <code>
+            {{ object.content }}
+        </code>  
+        <hr>
+    {% empty %}
+        <p>No knowledge to display!</p>
+    {% endfor %}
+
+</body>
+</html>
