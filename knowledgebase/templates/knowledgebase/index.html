@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tags: </h1>
+    {% for tag in tags %}
+        <a href="{% 'knowledge-by-tag' tag.name %}">{{ tag.name }}</a>
+    {% endfor %}
+    <h1>Knowledge</h1>
+
+
+    {% for object in knowledge %}
+        <p>Knowledge name: {{ object.name }}</p>
+        <p>Knowledge description: {{ object.description }}</p>
+        <p>Content:</p>    
+        <code>
+            {{ object.content }}
+        </code>
+        <hr>
+    {% empty %}
+
+        <p>No knowledge yet!</p>
+
+    {% endfor %}
+</body>
+</html>

@@ -3,7 +3,14 @@ from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
+from django.shortcuts import render
 from knowledgebase.models import Knowledge, Tag
+
+def index(request): 
+    return render(request, template_name='knowledgebase/index.html', context={
+        "knowledge": Knowledge.objects.all(),
+        "tags": Tag.objects.all(),
+    })
 
 class KnowledgeCreateView(CreateView):
     model = Knowledge
