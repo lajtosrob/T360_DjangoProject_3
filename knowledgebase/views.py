@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -29,6 +29,11 @@ class KnowledgeByTagView(ListView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(tags__name=self.kwargs['name'])
+    
+    def get_context_data(self, **kwargs):
+        context = super(KnowledgeByTagView, self).get_context_data()
+        context['current_tag_pk'] = Tag.objects.filter(name=self.kwargs['name']).first().pk
+        return context
 
 class TagCreateView(CreateView):
     model = Tag
